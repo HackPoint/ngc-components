@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ngc/components": ["packages/shared/ui/src/index.ts"],
+      "@ngc/components/*": ["packages/shared/ui/*"],
+      "@ngc/components/dragndrop": ["packages/shared/ui/dragndrop/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

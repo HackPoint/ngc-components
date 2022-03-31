@@ -1,0 +1,77 @@
+{
+  "projectType": "library",
+  "root": "packages/shared/ui",
+  "sourceRoot": "packages/shared/ui/src",
+  "prefix": "ngc-components",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/shared/ui"],
+      "options": {
+        "project": "packages/shared/ui/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/shared/ui/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/shared/ui/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/shared/ui"],
+      "options": {
+        "jestConfig": "packages/shared/ui/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/shared/ui/src/**/*.ts",
+          "packages/shared/ui/src/**/*.html",
+          "packages/shared/ui/dragndrop/**/*.ts",
+          "packages/shared/ui/dragndrop/**/*.html"
+        ]
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "port": 4400,
+        "config": {
+          "configFolder": "packages/shared/ui/.storybook"
+        },
+        "projectBuildConfig": "shared-ui:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/shared-ui",
+        "config": {
+          "configFolder": "packages/shared/ui/.storybook"
+        },
+        "projectBuildConfig": "shared-ui:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "tags": ["scope:ui"]
+}

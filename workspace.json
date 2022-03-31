@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "shared-ui": "packages/shared/ui",
+    "shared-ui-e2e": "packages/shared-ui-e2e"
+  }
 }
